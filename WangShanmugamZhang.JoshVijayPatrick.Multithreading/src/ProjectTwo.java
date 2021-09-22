@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.concurrent.locks.*;
 
-public class Main{
+public class ProjectTwo{
 
     static Set<Integer> set = new HashSet<Integer>();
     static Lock lock = new ReentrantLock(true);
