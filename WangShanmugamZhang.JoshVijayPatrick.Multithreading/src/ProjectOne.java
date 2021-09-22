@@ -3,7 +3,7 @@ import java.util.concurrent.RecursiveAction;
 
 public class ProjectOne {
     public static void main(String[] args) {
-        final int sizeOfList = 200000000;
+        final int sizeOfList = 10000;
         int[] parallelList = new int[sizeOfList];
         int[] sequentialList = new int[sizeOfList];
       
@@ -35,15 +35,15 @@ public class ProjectOne {
     }
       
     private static int split(int[] list, int start, int end) {
-        int pivot = list[start];
+        int splitPoint = list[start];
         int small = start + 1;
         int big = end;
       
         while (big > small) {
-            while (small <= big && list[small] <= pivot)
+            while (small <= big && list[small] <= splitPoint)
                 small++;
       
-            while (small <= big && list[big] > pivot)
+            while (small <= big && list[big] > splitPoint)
                 big--;
       
             if (big > small) {
@@ -53,12 +53,12 @@ public class ProjectOne {
             }
         }
       
-        while (big > start && list[big] >= pivot)
+        while (big > start && list[big] >= splitPoint)
             big--;
       
-        if (pivot > list[big]) {
+        if (splitPoint > list[big]) {
             list[start] = list[big];
-            list[big] = pivot;
+            list[big] = splitPoint;
             return big;
         } else {
             return start;
